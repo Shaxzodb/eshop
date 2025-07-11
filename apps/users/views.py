@@ -16,6 +16,12 @@ class BotUserViewSet(viewsets.ModelViewSet):
     queryset = BotUser.objects.all()
     serializer_class = BotUserSerializer
     permission_classes = [AllowAny]
+
+    def get_queryset(self):
+        chat_id = self.request.query_params.get('chat_id')
+        if chat_id:
+            return self.queryset.filter(chat_id=chat_id)
+        return self.queryset
     def create(self, request, *args, **kwargs):
         data = request.data
 

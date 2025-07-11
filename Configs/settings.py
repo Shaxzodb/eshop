@@ -119,7 +119,9 @@ USE_I18N = True
 USE_TZ = True
 
 REST_FRAMEWORK = {
+
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
+    'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.AllowAny'],
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.SessionAuthentication',  # bu HTML login uchun
         'rest_framework_simplejwt.authentication.JWTAuthentication',
